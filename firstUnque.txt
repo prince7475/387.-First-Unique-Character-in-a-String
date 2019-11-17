@@ -1,0 +1,40 @@
+Given a string, find the first non-repeating character in it and return it's index.
+If it doesn't exist, return -1.
+
+Examples:
+
+s = "leetcode"
+return 0.
+
+s = "loveleetcode",
+return 2.
+Note: You may assume the string contain only lowercase letters.
+
+---- 
+Use a hashMap
+Loop through string
+hashMap = {
+  letter : count Of letter
+}
+for(let i = 0; i < str.length; i++){
+  let curr = str[i]
+  if(hashMap[curr] === 1) return i
+}
+
+return -1 
+
+function firstUniqChar(s){
+  let hashMap = {}
+  for(letter of s){
+    if(!(letter in hashMap)) hashMap[letter] = 0
+    hashMap[letter] += 1
+  }
+  
+  for(let i = 0; i < s.length; i++){
+    let curr = s[i]
+    if(hashMap[curr] === 1) return i
+  }
+  
+  return -1
+  
+}
